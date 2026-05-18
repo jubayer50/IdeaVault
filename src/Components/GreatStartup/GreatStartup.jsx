@@ -1,3 +1,9 @@
+import idea from "@/assets/images/idea.png";
+import feedback from "@/assets/images/feedback.png";
+import collaborators from "@/assets/images/collaborators.png";
+import innovation from "@/assets/images/innovation.png";
+import Image from "next/image";
+
 const GreatStartup = () => {
   return (
     <div className="max-w-340 mx-auto px-3 my-30">
@@ -12,6 +18,16 @@ const GreatStartup = () => {
 
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
         <div className="text-center space-y-3.5 px-6 py-8 rounded-md shadow hover:shadow-lg transition duration-300">
+          <div className="flex items-center justify-center mb-5">
+            <Image
+              src={idea}
+              alt="idea"
+              width={400}
+              height={400}
+              className="w-20"
+            ></Image>
+          </div>
+
           <h3 className="text-xl font-semibold">Lost Startup Ideas</h3>
           <p>
             Brilliant concepts often disappear before they are fully explored or
@@ -20,6 +36,16 @@ const GreatStartup = () => {
         </div>
 
         <div className="text-center space-y-3.5 px-6 py-8 rounded-md shadow hover:shadow-lg transition duration-300">
+          <div className="flex items-center justify-center mb-5">
+            <Image
+              src={feedback}
+              alt="feedback"
+              width={400}
+              height={400}
+              className="w-20"
+            ></Image>
+          </div>
+
           <h3 className="text-xl font-semibold">No Real Feedback</h3>
           <p>
             Ideas stay untested because there’s no active community to discuss
@@ -28,6 +54,16 @@ const GreatStartup = () => {
         </div>
 
         <div className="text-center space-y-3.5 px-6 py-8 rounded-md shadow hover:shadow-lg transition duration-300">
+          <div className="flex items-center justify-center mb-5">
+            <Image
+              src={collaborators}
+              alt="collaborators"
+              width={400}
+              height={400}
+              className="w-20"
+            ></Image>
+          </div>
+
           <h3 className="text-xl font-semibold">Hard to Find Collaborators</h3>
           <p>
             Creators struggle to connect with developers, designers, and
@@ -36,6 +72,16 @@ const GreatStartup = () => {
         </div>
 
         <div className="text-center space-y-3.5 px-6 py-8 rounded-md shadow hover:shadow-lg transition duration-300">
+          <div className="flex items-center justify-center mb-5">
+            <Image
+              src={innovation}
+              alt="innovation"
+              width={400}
+              height={400}
+              className="w-20"
+            ></Image>
+          </div>
+
           <h3 className="text-xl font-semibold">
             Innovation Without Visibility
           </h3>
