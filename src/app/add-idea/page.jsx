@@ -21,8 +21,8 @@ const AddIdeaPage = () => {
   };
 
   return (
-    <div className="px-3">
-      <h2 className="text-center text-3xl md:text-4xl font-semibold pt-8">
+    <div className="px-3 my-12 md:my-20">
+      <h2 className="text-center text-3xl md:text-4xl font-semibold">
         Add your startup Idea
       </h2>
       <p className="text-center max-w-150 mx-auto mt-3">

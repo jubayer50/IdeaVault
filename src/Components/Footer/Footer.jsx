@@ -49,13 +49,13 @@ const Footer = () => {
             <p className="text-xl font-medium text-white">Social links:</p>
 
             <div className="flex items-center gap-3 mt-2">
-              <div className="w-10 h-10 rounded-full p-1 bg-white flex items-center justify-center">
+              <div className="w-9 h-9 rounded-full p-1 bg-white flex items-center justify-center">
                 <FaXTwitter className="" />
               </div>
-              <div className="w-10 h-10 rounded-full p-1 bg-white flex items-center justify-center">
+              <div className="w-9 h-9 rounded-full p-1 bg-white flex items-center justify-center">
                 <FaLinkedinIn className="" />
               </div>
-              <div className="w-10 h-10 rounded-full p-1 bg-white flex items-center justify-center">
+              <div className="w-9 h-9 rounded-full p-1 bg-white flex items-center justify-center">
                 <FaFacebookF className="" />
               </div>
             </div>
