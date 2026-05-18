@@ -27,7 +27,7 @@ const LoginPage = () => {
   return (
     <div className="px-3 my-20 flex items-center justify-center max-w-250 mx-auto">
       <div className="rounded-md border border-gray-200 flex gap-4 overflow-hidden">
-        <div className="flex-1 p-6 md:p-8">
+        <div className="flex-1 p-4 md:p-8">
           <div className="space-y-1">
             <h2 className="text-[#001931] font-bold text-[22px] md:text-3xl">
               Welcome Back to Idea<span className="text-[#469165]">Vault</span>
@@ -37,8 +37,8 @@ const LoginPage = () => {
             </p>
           </div>
 
-          <div className="mt-7 lg:mt-12">
-            <Form className="space-y-4 lg:space-y-6" onSubmit={onSubmit}>
+          <div className="mt-4 lg:mt-12">
+            <Form className="space-y-3 lg:space-y-6" onSubmit={onSubmit}>
               <TextField isRequired name="email" type="email">
                 <Label>Email</Label>
                 <Input
@@ -82,7 +82,7 @@ const LoginPage = () => {
                 </Link>
               </div>
 
-              <div className="mt-4 lg:mt-7 space-y-3 lg:space-y-5">
+              <div className="mt-3 lg:mt-7 space-y-2 lg:space-y-5">
                 <Button
                   type="submit"
                   className={
@@ -105,11 +105,23 @@ const LoginPage = () => {
                 </Button>
               </div>
             </Form>
+
+            <div className="text-center mt-3 lg:mt-4">
+              <p>
+                If you don't have account |{" "}
+                <Link
+                  href={"/registration"}
+                  className="text-blue-600 font-semibold"
+                >
+                  Registration
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="hidden md:block flex-1">
-          <div className="bg-[#F7F6F2] flex items-center justify-center p-20">
+          <div className="bg-[#F7F6F2] flex items-center justify-center p-20 ">
             <Image
               src={loginImage}
               alt="idea illustration"
@@ -119,7 +131,7 @@ const LoginPage = () => {
             ></Image>
           </div>
 
-          <div className="py-14 px-8 bg-[#46916520] flex items-center justify-center text-center">
+          <div className="py-14 px-8 bg-[#46916520] flex items-center justify-center text-center ">
             <div className="space-y-4">
               <h2 className="font-bold text-2xl">
                 Turn Ideas Into Real Startups
