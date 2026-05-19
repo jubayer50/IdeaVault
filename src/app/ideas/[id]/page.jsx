@@ -1,5 +1,7 @@
+import CommentsCard from "@/Components/CommentsCard/CommentsCard";
+import PostComment from "@/Components/PostComment/PostComment";
 import { getIdeaById } from "@/lib/data";
-import { Button, Card, Chip, TextArea, TextField } from "@heroui/react";
+import { Card, Chip } from "@heroui/react";
 import Image from "next/image";
 
 const IdeaDetailPage = async ({ params }) => {
@@ -84,24 +86,9 @@ const IdeaDetailPage = async ({ params }) => {
         </div>
       </Card>
 
-      <div className="my-10 ">
-        <h3 className="font-semibold text-xl md:text-2xl">
-          Share your valuable comment:
-        </h3>
+      <PostComment idea={idea}></PostComment>
 
-        <div className="mt-2 ">
-          <TextField name="comment">
-            <TextArea
-              placeholder="Tell us your comment..."
-              className={"rounded-md shadow-none border border-gray-200"}
-            />
-          </TextField>
-
-          <Button className={"rounded-md bg-[#469165] mt-2"}>
-            Post Comment
-          </Button>
-        </div>
-      </div>
+      <CommentsCard ideaId={_id}></CommentsCard>
     </div>
   );
 };

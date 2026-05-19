@@ -34,7 +34,7 @@ const IdeasPage = async () => {
 
           <div>
             <Select
-              placeholder="Select one"
+              placeholder="Filter by Category"
               name="category"
               className={"flex-1"}
             >

@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -17,11 +18,17 @@ import { useRouter } from "next/navigation";
 const AddIdeaPage = () => {
   const rough = useRouter();
 
+  const { data: session } = authClient.useSession();
+
+  const user = session?.user;
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const ideaData = Object.fromEntries(formData.entries());
+
+    ideaData.userid = user.id;
 
     if (ideaData.tags) {
       ideaData.tags = ideaData.tags

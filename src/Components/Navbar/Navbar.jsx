@@ -13,12 +13,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
 
-  const {
-    data: session,
-    isPending, //loading state
-    error, //error object
-    refetch, //refetch the session
-  } = authClient.useSession();
+  const { data: session } = authClient.useSession();
 
   const user = session?.user;
 
@@ -98,9 +93,11 @@ const Navbar = () => {
 
             {showUserMenu && (
               <div className="absolute top-14.5 right-0 space-y-1 px-3 py-2 bg-gray-100 rounded-md border shadow-sm w-40">
-                <p className="hover:bg-gray-200 px-2 py-1 rounded-md flex items-center gap-2">
-                  <FaRegUser /> Profile
-                </p>
+                <Link href={"/profile"}>
+                  <p className="hover:bg-gray-200 px-2 py-1 rounded-md flex items-center gap-2">
+                    <FaRegUser /> Profile
+                  </p>
+                </Link>
                 <p
                   onClick={async () => await authClient.signOut()}
                   className="text-red-600 hover:bg-gray-200 px-2 py-1 rounded-md flex items-center gap-2"
@@ -134,7 +131,7 @@ const Navbar = () => {
           <ul className="flex flex-col gap-2 p-4">
             {links}{" "}
             <li>
-              <Link href={"/login"}>LogIn</Link>
+              <Link href={"/login"}>Log In</Link>
             </li>
           </ul>
         </div>

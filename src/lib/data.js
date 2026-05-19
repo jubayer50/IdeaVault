@@ -23,3 +23,11 @@ export const getTrendingIdeas = async () => {
 
   return data;
 };
+
+// fetch for comments
+export const getComments = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments`);
+  const data = await res.json();
+
+  return data;
+};
