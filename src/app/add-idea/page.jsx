@@ -10,14 +10,39 @@ import {
   ListBox,
   TextArea,
   TextField,
+  toast,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
 
 const AddIdeaPage = () => {
-  const onSubmit = (e) => {
+  const rough = useRouter();
+
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const ideaData = Object.fromEntries(formData.entries());
+
+    if (ideaData.tags) {
+      ideaData.tags = ideaData.tags
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter(Boolean);
+    }
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(ideaData),
+    });
+    const data = await res.json();
+
+    console.log(data.insertedId, "form data clinet site");
+
+    if (data) {
+      rough.push("/ideas");
+      toast.success("Idea added successfully!");
+    }
   };
 
   return (
@@ -41,15 +66,7 @@ const AddIdeaPage = () => {
               />
             </TextField>
 
-            <TextField isRequired name="name" type="text">
-              <Label>Idea Title</Label>
-              <Input
-                placeholder="Enter your idea title"
-                className={"rounded-md shadow-none border border-gray-200"}
-              />
-            </TextField>
-
-            <TextField isRequired name="short-description">
+            <TextField isRequired name="short_description">
               <Label>Short Description</Label>
               <TextArea
                 placeholder="Enter short description"
@@ -57,7 +74,7 @@ const AddIdeaPage = () => {
               />
             </TextField>
 
-            <TextField isRequired name="detailed-description">
+            <TextField isRequired name="detailed_description">
               <Label>Detailed Description</Label>
               <TextArea
                 placeholder="Enter short description"
@@ -154,7 +171,7 @@ const AddIdeaPage = () => {
             </TextField>
 
             <div className="flex flex-col md:flex-row gap-4">
-              <TextField name="problem-statement" className={"flex-1"}>
+              <TextField name="problem_statement" className={"flex-1"}>
                 <Label>Problem Statement</Label>
                 <TextArea
                   placeholder="Enter problem statement"
@@ -162,7 +179,7 @@ const AddIdeaPage = () => {
                 />
               </TextField>
 
-              <TextField name="proposed-solution" className={"flex-1"}>
+              <TextField name="proposed_solution" className={"flex-1"}>
                 <Label>Proposed Solution</Label>
                 <TextArea
                   placeholder="Enter proposed solution"
@@ -173,7 +190,7 @@ const AddIdeaPage = () => {
 
             <div className="flex flex-col md:flex-row gap-4">
               <TextField
-                name="estimated-budget"
+                name="estimated_budget"
                 type="text"
                 className={"flex-1"}
               >
@@ -185,7 +202,7 @@ const AddIdeaPage = () => {
               </TextField>
 
               <TextField
-                name="target-audience"
+                name="target_audience"
                 type="text"
                 className={"flex-1"}
               >

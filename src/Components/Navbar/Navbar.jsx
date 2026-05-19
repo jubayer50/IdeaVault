@@ -13,6 +13,7 @@ const Navbar = () => {
 
   const links = (
     <>
+      <MyNavLink href={"/"}>Home</MyNavLink>
       <MyNavLink href={"/ideas"}>Ideas</MyNavLink>
       <MyNavLink href={"/add-idea"}>Add Ideas</MyNavLink>
       <MyNavLink href={"/my-ideas"}>My Ideas</MyNavLink>
@@ -61,7 +62,9 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <ul className="hidden items-center gap-5 md:flex">{links}</ul>
+        <ul className="hidden items-center gap-3.5 lg:gap-5 md:flex">
+          {links}
+        </ul>
 
         <div
           onClick={() => setShowUserMenu(!showUserMenu)}
