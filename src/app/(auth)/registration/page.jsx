@@ -20,6 +20,7 @@ import { IoEyeOutline } from "react-icons/io5";
 
 const RegistrationPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+
   const route = useRouter();
 
   const onSubmit = async (e) => {
@@ -35,12 +36,14 @@ const RegistrationPage = () => {
       image: userData.image,
     });
 
+    console.log(data, "from registration page");
+
     if (data) {
-      toast.success("Registration successful!");
+      toast.success("Register successful!");
       route.push("/");
     }
 
-    if (!data) {
+    if (error) {
       toast.danger(error.message);
     }
   };

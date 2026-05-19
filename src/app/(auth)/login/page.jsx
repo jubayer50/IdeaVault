@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import loginImage from "@/assets/images/ideaLogin.png";
-import { Check } from "@gravity-ui/icons";
+
 import {
   Button,
   Description,
@@ -29,15 +29,16 @@ const LoginPage = () => {
 
     const formData = new FormData(e.currentTarget);
     const loginData = Object.fromEntries(formData.entries());
-    console.log(loginData, "from login page");
 
     const { data, error } = await authClient.signIn.email({
       email: loginData.email,
       password: loginData.password,
     });
 
+    console.log(data, "from login page");
+
     if (data) {
-      toast.success("Login Successful!");
+      toast.success("Login successful!");
     }
 
     if (error) {

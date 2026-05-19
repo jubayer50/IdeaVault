@@ -1,15 +1,26 @@
 "use client";
 
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { Avatar } from "@heroui/react";
+import { Avatar, Button } from "@heroui/react";
 import Link from "next/link";
 import { useState } from "react";
 import { CiLogout } from "react-icons/ci";
 import MyNavLink from "./MyNavLink";
+import { authClient } from "@/lib/auth-client";
+import { FaRegUser } from "react-icons/fa6";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
+
+  const {
+    data: session,
+    isPending, //loading state
+    error, //error object
+    refetch, //refetch the session
+  } = authClient.useSession();
+
+  const user = session?.user;
 
   const links = (
     <>
@@ -66,35 +77,66 @@ const Navbar = () => {
           {links}
         </ul>
 
-        <div
-          onClick={() => setShowUserMenu(!showUserMenu)}
-          className="flex relative items-center gap-2 px-3 py-1.5  hover:bg-white transition duration-300 rounded-md"
-        >
-          <Avatar>
-            <Avatar.Image
-              alt="John Doe"
-              src="https://img.heroui.chat/image/avatar?w=400&h=400&u=3"
+        {user ? (
+          <div
+            onClick={() => setShowUserMenu(!showUserMenu)}
+            className="flex relative items-center gap-2 px-3 py-1.5  hover:bg-white transition duration-300 rounded-md"
+          >
+            <Avatar>
+              <Avatar.Image
+                alt={user?.name}
+                src={user?.image}
+                referrerPolicy="no"
+                className="object-cover aspect-square"
+              />
+              <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+            </Avatar>
+
+            <RiArrowDropDownLine
+              className={`${showUserMenu ? "rotate-180 transition duration-300" : ""} text-2xl`}
             />
-            <Avatar.Fallback>JD</Avatar.Fallback>
-          </Avatar>
 
-          <RiArrowDropDownLine
-            className={`${showUserMenu ? "rotate-180 transition duration-300" : ""} text-2xl`}
-          />
+            {showUserMenu && (
+              <div className="absolute top-14.5 right-0 space-y-1 px-3 py-2 bg-gray-100 rounded-md border shadow-sm w-40">
+                <p className="hover:bg-gray-200 px-2 py-1 rounded-md flex items-center gap-2">
+                  <FaRegUser /> Profile
+                </p>
+                <p
+                  onClick={async () => await authClient.signOut()}
+                  className="text-red-600 hover:bg-gray-200 px-2 py-1 rounded-md flex items-center gap-2"
+                >
+                  <CiLogout className="font-bold text-lg" /> Log Out
+                </p>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="flex items-center gap-3">
+            <Link href={"/login"}>
+              <Button
+                variant="outline"
+                className={
+                  "rounded-md border border-[#469165] hidden md:block "
+                }
+              >
+                Log In
+              </Button>
+            </Link>
 
-          {showUserMenu && (
-            <div className="absolute top-14.5 right-0 space-y-3 px-3 py-2 bg-gray-100 rounded-md border shadow-sm w-40">
-              <p className="hover:bg-gray-200 px-2 py-1 rounded-md">Profile</p>
-              <p className="text-red-600 hover:bg-gray-200 px-2 py-1 rounded-md flex items-center gap-2">
-                <CiLogout className="font-bold text-lg" /> Log Out
-              </p>
-            </div>
-          )}
-        </div>
+            <Link href={"/registration"}>
+              <Button className={"rounded-md bg-[#469165]"}>Sign Up</Button>
+            </Link>
+          </div>
+        )}
       </header>
       {isMenuOpen && (
         <div className="border-t border-separator md:hidden">
-          <ul className="flex flex-col gap-2 p-4">{links}</ul>
+          <ul className="flex flex-col gap-2 p-4">
+            {links}{" "}
+            <li>
+              <Link href={"/login"}>LogIn</Link>
+            </li>
+          </ul>
         </div>
       )}
     </nav>
