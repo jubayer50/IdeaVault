@@ -41,7 +41,7 @@ const RegistrationPage = () => {
     }
 
     if (!data) {
-      toast.error(error.message);
+      toast.danger(error.message);
     }
   };
 

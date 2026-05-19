@@ -11,21 +11,38 @@ import {
   Input,
   Label,
   TextField,
+  Toast,
+  toast,
 } from "@heroui/react";
 import Link from "next/link";
 import { IoLogoGoogle } from "react-icons/io";
 import { useState } from "react";
 import { IoEyeOutline } from "react-icons/io5";
 import { FaRegEyeSlash } from "react-icons/fa6";
+import { authClient } from "@/lib/auth-client";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const loginData = Object.fromEntries(formData.entries());
+    console.log(loginData, "from login page");
+
+    const { data, error } = await authClient.signIn.email({
+      email: loginData.email,
+      password: loginData.password,
+    });
+
+    if (data) {
+      toast.success("Login Successful!");
+    }
+
+    if (error) {
+      toast.danger(error.message);
+    }
   };
 
   return (
