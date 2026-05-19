@@ -86,7 +86,7 @@ const Navbar = () => {
             <div className="absolute top-14.5 right-0 space-y-3 px-3 py-2 bg-gray-100 rounded-md border shadow-sm w-40">
               <p className="hover:bg-gray-200 px-2 py-1 rounded-md">Profile</p>
               <p className="text-red-600 hover:bg-gray-200 px-2 py-1 rounded-md flex items-center gap-2">
-                <CiLogout className="font-bold text-lg" /> Delete
+                <CiLogout className="font-bold text-lg" /> Log Out
               </p>
             </div>
           )}

@@ -1,4 +1,4 @@
-import { Button, Card } from "@heroui/react";
+import { Button, Card, Chip } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -19,8 +19,12 @@ const IdeaCard = ({ idea }) => {
             ></Image>
           </div>
 
-          <div className="flex flex-col flex-1 mt-4 space-y-3">
-            <Card.Header className="flex-1 space-y-3">
+          <div className="flex flex-col flex-1 mt-4 space-y-4">
+            <div className="text-[#469165]">
+              <Chip className="bg-[#f3f0e4]">Category: {category}</Chip>
+            </div>
+
+            <Card.Header className="flex-1 space-y-4">
               <Card.Title className="text-xl font-semibold">{name}</Card.Title>
 
               <Card.Description className="">

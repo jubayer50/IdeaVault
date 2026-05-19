@@ -37,8 +37,6 @@ const AddIdeaPage = () => {
     });
     const data = await res.json();
 
-    console.log(data.insertedId, "form data clinet site");
-
     if (data) {
       rough.push("/ideas");
       toast.success("Idea added successfully!");
