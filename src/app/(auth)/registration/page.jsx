@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -8,17 +9,37 @@ import {
   Input,
   Label,
   TextField,
+  toast,
 } from "@heroui/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { IoLogoGoogle } from "react-icons/io";
 
 const RegistrationPage = () => {
-  const onSubmit = (e) => {
+  const route = useRouter();
+
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
+
+    const { data, error } = await authClient.signUp.email({
+      email: userData.email,
+      password: userData.password,
+      name: userData.name,
+      image: userData.image,
+    });
+
+    if (data) {
+      toast.success("Registration successful!");
+      route.push("/");
+    }
+
+    if (!data) {
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -98,7 +119,7 @@ const RegistrationPage = () => {
                   "w-full rounded-md bg-[#469165] text-lg py-5 font-semibold"
                 }
               >
-                Log In
+                Register
               </Button>
 
               <div className="text-center font-medium text-lg">

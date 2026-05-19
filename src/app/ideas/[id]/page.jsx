@@ -1,5 +1,5 @@
 import { getIdeaById } from "@/lib/data";
-import { Card, Chip, TextArea, TextField } from "@heroui/react";
+import { Button, Card, Chip, TextArea, TextField } from "@heroui/react";
 import Image from "next/image";
 
 const IdeaDetailPage = async ({ params }) => {
@@ -25,13 +25,13 @@ const IdeaDetailPage = async ({ params }) => {
     <div className="max-w-340 mx-auto px-3 my-12">
       <Card className="border border-gray-200 rounded-md p-3 h-full flex flex-col group">
         <div className="flex flex-col h-full">
-          <div className="h-120 overflow-hidden">
+          <div className="h-130 overflow-hidden">
             <Image
               src={image}
               alt={name}
               width={1200}
               height={1200}
-              className="object-cover aspect-square rounded-md h-full w-full transition-transform duration-400 group-hover:scale-106 ease-in-out"
+              className="object-cover aspect-square rounded-md h-full w-full transition-transform duration-400 group-hover:scale-106  ease-in-out"
             ></Image>
           </div>
 
@@ -84,18 +84,22 @@ const IdeaDetailPage = async ({ params }) => {
         </div>
       </Card>
 
-      <div className="mt-10">
+      <div className="my-10 ">
         <h3 className="font-semibold text-xl md:text-2xl">
           Share your valuable comment:
         </h3>
 
-        <div className="mt-2">
+        <div className="mt-2 ">
           <TextField name="comment">
             <TextArea
               placeholder="Tell us your comment..."
               className={"rounded-md shadow-none border border-gray-200"}
             />
           </TextField>
+
+          <Button className={"rounded-md bg-[#469165] mt-2"}>
+            Post Comment
+          </Button>
         </div>
       </div>
     </div>
