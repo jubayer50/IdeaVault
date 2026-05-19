@@ -13,10 +13,13 @@ import {
 } from "@heroui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
+import { FaRegEyeSlash } from "react-icons/fa6";
 import { IoLogoGoogle } from "react-icons/io";
+import { IoEyeOutline } from "react-icons/io5";
 
 const RegistrationPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const route = useRouter();
 
   const onSubmit = async (e) => {
@@ -83,10 +86,11 @@ const RegistrationPage = () => {
 
             <div className="space-y-1">
               <TextField
+                className={"relative"}
                 isRequired
                 minLength={6}
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 validate={(value) => {
                   if (value.length < 6) {
                     return "Password must be at least 6 characters";
@@ -109,6 +113,13 @@ const RegistrationPage = () => {
                   Must be at least 6 characters with 1 lowercase and uppercase
                 </Description>
                 <FieldError />
+
+                <div
+                  className="absolute top-[44%] md:top-[50%] right-2 -translate-y-1/2"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <IoEyeOutline /> : <FaRegEyeSlash />}
+                </div>
               </TextField>
             </div>
 

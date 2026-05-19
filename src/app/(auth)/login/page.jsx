@@ -10,13 +10,17 @@ import {
   Form,
   Input,
   Label,
-  Separator,
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
 import { IoLogoGoogle } from "react-icons/io";
+import { useState } from "react";
+import { IoEyeOutline } from "react-icons/io5";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 const LoginPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -49,10 +53,11 @@ const LoginPage = () => {
 
               <div className="space-y-1">
                 <TextField
+                  className={"relative"}
                   isRequired
                   minLength={6}
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   validate={(value) => {
                     if (value.length < 6) {
                       return "Password must be at least 6 characters";
@@ -69,12 +74,19 @@ const LoginPage = () => {
                   <Label>Password</Label>
                   <Input
                     placeholder="Enter your password"
-                    className={"rounded-md border border-gray-200 shadow-none"}
+                    className={"rounded-md border border-gray-200 shadow-none "}
                   />
                   <Description className="mt-1">
                     Must be at least 6 characters with 1 lowercase and uppercase
                   </Description>
                   <FieldError />
+
+                  <div
+                    className="absolute top-[44%] lg:top-[50%] right-2 -translate-y-1/2"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <IoEyeOutline /> : <FaRegEyeSlash />}
+                  </div>
                 </TextField>
 
                 <Link href={"/forget-password"} className="text-blue-600">
