@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 const IdeaCard = ({ idea }) => {
-  const { _id, name, short_description, image, category, tags } = idea;
+  const { _id, name, short_description, image, category } = idea;
   return (
     <div>
       <Card className="border border-gray-200 rounded-md p-3 h-full flex flex-col group">
