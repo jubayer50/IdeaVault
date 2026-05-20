@@ -46,6 +46,12 @@ const LoginPage = () => {
     }
   };
 
+  const handleGoogleLoin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
   return (
     <div className="px-3 my-20 flex items-center justify-center max-w-250 mx-auto">
       <div className="rounded-md border border-gray-200 flex gap-4 overflow-hidden">
@@ -127,6 +133,7 @@ const LoginPage = () => {
                 </div>
 
                 <Button
+                  onClick={handleGoogleLoin}
                   variant="outline"
                   className={"w-full rounded-md text-lg py-5 font-semibold"}
                 >

@@ -48,6 +48,12 @@ const RegistrationPage = () => {
     }
   };
 
+  const handleGoogleLoin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
   return (
     <div className="max-w-360 mx-auto px-3 flex items-center justify-center my-12 md:my-26">
       <div>
@@ -141,6 +147,7 @@ const RegistrationPage = () => {
               </div>
 
               <Button
+                onClick={handleGoogleLoin}
                 variant="outline"
                 className={"w-full rounded-md text-lg py-5 font-semibold"}
               >
