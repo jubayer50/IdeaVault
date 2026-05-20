@@ -11,7 +11,6 @@ import {
   Input,
   Label,
   TextField,
-  Toast,
   toast,
 } from "@heroui/react";
 import Link from "next/link";
@@ -20,9 +19,15 @@ import { useState } from "react";
 import { IoEyeOutline } from "react-icons/io5";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { authClient } from "@/lib/auth-client";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const redirectPath = searchParams.get("redirect") || "/";
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -43,12 +48,14 @@ const LoginPage = () => {
 
     if (error) {
       toast.danger(error.message);
+      router.push(redirectPath);
     }
   };
 
   const handleGoogleLoin = async () => {
     await authClient.signIn.social({
       provider: "google",
+      callbackURL: redirectPath,
     });
   };
 
