@@ -4,6 +4,12 @@ import { headers } from "next/headers";
 import Link from "next/link";
 import { IoIosArrowRoundBack } from "react-icons/io";
 
+export const metadata = {
+  title: "IdeaVault | my-interactions",
+  description:
+    "IdeaVault is a web-based platform where users can share innovative startup ideas,explore ideas posted by others, and engage through comments, and discussions.",
+};
+
 const MyInteractionsPage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),

@@ -6,6 +6,19 @@ import { Card, Chip } from "@heroui/react";
 import { headers } from "next/headers";
 import Image from "next/image";
 
+// generate metadata
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/idea/${id}`);
+  const data = await res.json();
+
+  return {
+    title: data.name,
+    description: data.short_description,
+  };
+}
+
 const IdeaDetailPage = async ({ params }) => {
   const { id } = await params;
 
@@ -104,26 +117,8 @@ const IdeaDetailPage = async ({ params }) => {
       <PostComment idea={idea}></PostComment>
 
       <Comments ideaId={_id}></Comments>
-
-      {/* <CommentsCard ideaId={_id}></CommentsCard> */}
     </div>
   );
 };
 
 export default IdeaDetailPage;
-
-/**
- {
-    "_id": "6a0bf372df879ebdb22be335",
-    "name": "Smart Expense Tracker",
-    "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
-    "category": "finance",
-    "tags": "finance, budgeting, savings",
-    "detailed_description": "Users can track spending, categorize expenses, and receive monthly financial reports with AI-based saving tips.",
-    "estimated_budget": "10,000",
-    "problem_statement": "Many people fail to manage their personal finances properly.",
-    "proposed_solution": "Automate expense tracking and provide financial insights.",
-    "short_description": "An app that helps users manage expenses and savings efficiently.",
-    "target_audience": "Students and young professionals"
-}
- */

@@ -1,5 +1,11 @@
 import { Button, Form, Input, Label, TextField } from "@heroui/react";
 
+export const metadata = {
+  title: "IdeaVault | forget-password",
+  description:
+    "IdeaVault is a web-based platform where users can share innovative startup ideas,explore ideas posted by others, and engage through comments, and discussions.",
+};
+
 const ForgetPasswordPage = () => {
   return (
     <div className="max-w-340 mx-auto my-12 md:my-42 px-3 flex items-center justify-center">

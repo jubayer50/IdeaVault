@@ -27,7 +27,7 @@ const LoginPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const redirectPath = searchParams.get("redirect") || "/";
+  const redirectPath = searchParams.get("redirect");
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +55,6 @@ const LoginPage = () => {
   const handleGoogleLoin = async () => {
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: redirectPath,
     });
   };
 

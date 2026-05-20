@@ -2,6 +2,12 @@ import IdeaCard from "@/Components/IdeaCard/IdeaCard";
 import { getIdeas } from "@/lib/data";
 import { Button, ListBox, SearchField, Select } from "@heroui/react";
 
+export const metadata = {
+  title: "IdeaVault | ideas",
+  description:
+    "IdeaVault is a web-based platform where users can share innovative startup ideas,explore ideas posted by others, and engage through comments, and discussions.",
+};
+
 const IdeasPage = async () => {
   const ideas = await getIdeas();
 

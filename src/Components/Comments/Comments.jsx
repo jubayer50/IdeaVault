@@ -1,9 +1,14 @@
 import { getComments } from "@/lib/data";
-
 import CommentCard from "../CommentCard/CommentCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const Comments = async ({ ideaId }) => {
-  const comments = await getComments();
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+
+  const comments = await getComments(token);
 
   const targetComments = comments.filter(
     (comment) => comment.idea_id === ideaId,

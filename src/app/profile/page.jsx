@@ -3,6 +3,12 @@ import { auth } from "@/lib/auth";
 import { Avatar, Card } from "@heroui/react";
 import { headers } from "next/headers";
 
+export const metadata = {
+  title: "IdeaVault | profile",
+  description:
+    "IdeaVault is a web-based platform where users can share innovative startup ideas,explore ideas posted by others, and engage through comments, and discussions.",
+};
+
 const ProfilePage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
