@@ -7,8 +7,10 @@ export const getIdeas = async () => {
 };
 
 // fetch for single idea data
-export const getIdeaById = async (id) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`);
+export const getIdeaById = async (id, token) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
   const data = await res.json();
 
   return data;

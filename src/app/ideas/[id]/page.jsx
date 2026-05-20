@@ -1,13 +1,19 @@
 import Comments from "@/Components/Comments/Comments";
 import PostComment from "@/Components/PostComment/PostComment";
+import { auth } from "@/lib/auth";
 import { getIdeaById } from "@/lib/data";
 import { Card, Chip } from "@heroui/react";
+import { headers } from "next/headers";
 import Image from "next/image";
 
 const IdeaDetailPage = async ({ params }) => {
   const { id } = await params;
 
-  const idea = await getIdeaById(id);
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+
+  const idea = await getIdeaById(id, token);
 
   const {
     _id,
@@ -38,8 +44,10 @@ const IdeaDetailPage = async ({ params }) => {
           </div>
 
           <div className="flex flex-col flex-1 mt-4 space-y-4">
-            <div className="text-[#469165]">
-              <Chip className="bg-[#f3f0e4]">Category: {category}</Chip>
+            <div className="">
+              <Chip className="bg-[#f3f0e4] text-[#469165]">
+                Category: {category}
+              </Chip>
             </div>
 
             <Card.Header className="flex-1 space-y-4">

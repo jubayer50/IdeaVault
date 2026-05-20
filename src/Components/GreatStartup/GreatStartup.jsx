@@ -7,7 +7,7 @@ import Image from "next/image";
 const GreatStartup = () => {
   return (
     <div className="max-w-340 mx-auto px-3 my-30">
-      <h2 className="text-[#001931] text-[28px] md:text-[42px] text-center font-bold">
+      <h2 className="text-[28px] md:text-[42px] text-center font-bold">
         Great Startup Ideas Deserve More Than Just Notes
       </h2>
       <p className="max-w-200 mx-auto mt-3 text-center">

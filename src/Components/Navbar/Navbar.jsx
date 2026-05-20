@@ -63,7 +63,7 @@ const Navbar = () => {
           </button>
 
           <Link href={"/"} className="flex items-center gap-3">
-            <h2 className="text-2xl md:text-3xl font-black text-[#001931]">
+            <h2 className="text-2xl md:text-3xl font-black">
               Idea<span className="text-[#469165]">Vault</span>
             </h2>
           </Link>
@@ -73,7 +73,7 @@ const Navbar = () => {
           {links}
         </ul>
 
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 md:gap-4 items-center">
           <ThemeSwitch></ThemeSwitch>
 
           {user ? (
