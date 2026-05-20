@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { getComments } from "@/lib/data";
 import { headers } from "next/headers";
 import Link from "next/link";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 const MyInteractionsPage = async () => {
   const session = await auth.api.getSession({
@@ -33,15 +34,17 @@ const MyInteractionsPage = async () => {
   return (
     <div className="max-w-340 mx-auto px-3 my-8 md:my-16">
       <div>
-        <h2 className="text-3xl font-bold">Your Ideas & Interactions</h2>
-        <p className="mt-1">
+        <h2 className="text-2xl md:text-3xl font-bold">
+          Your Ideas & Interactions
+        </h2>
+        <p className="mt-1.5">
           Track how the community is engaging with your startup ideas—view
           comments, feedback, and discussions all in one place to refine and
           improve your concepts.
         </p>
       </div>
 
-      <div className="mt-5 space-y-4">
+      <div className="mt-8 space-y-4">
         {userActivities.map((activity, i) => (
           <div key={i} className="border p-3 rounded-md">
             <div>
@@ -49,7 +52,11 @@ const MyInteractionsPage = async () => {
                 <strong>Idea title:</strong> {activity?.idea_name}
               </p>
               <Link href={`ideas/${activity?.idea_id}`}>
-                <small className="text-blue-600">back to idea details</small>
+                <small className="text-blue-600 flex items-center gap-1">
+                  {" "}
+                  <IoIosArrowRoundBack className="text-xl" /> back to idea
+                  details
+                </small>
               </Link>
             </div>
             <div className="mt-3 space-y-.5">

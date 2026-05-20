@@ -73,6 +73,13 @@ const IdeaDetailPage = async ({ params }) => {
                     {proposed_solution}
                   </p>
                 </div>
+
+                <div className="mt-6">
+                  <p>
+                    <span className="font-bold">Target Audience:</span>{" "}
+                    {target_audience}
+                  </p>
+                </div>
               </div>
 
               <div className="mt-3">
