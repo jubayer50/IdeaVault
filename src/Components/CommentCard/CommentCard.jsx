@@ -53,7 +53,10 @@ const CommentCard = ({ comment }) => {
           commentMessage={comment.comment}
         ></EditModal>
 
-        <DeleteModal comment={comment}></DeleteModal>
+        <DeleteModal
+          commentId={comment._id}
+          commentMessage={comment.comment}
+        ></DeleteModal>
       </div>
     </div>
   );
