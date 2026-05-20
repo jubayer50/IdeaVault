@@ -1,6 +1,6 @@
 import IdeaCard from "@/Components/IdeaCard/IdeaCard";
 import { getIdeas } from "@/lib/data";
-import { Button, Label, ListBox, SearchField, Select } from "@heroui/react";
+import { Button, ListBox, SearchField, Select } from "@heroui/react";
 
 const IdeasPage = async () => {
   const ideas = await getIdeas();
