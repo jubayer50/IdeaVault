@@ -27,8 +27,12 @@ export const getTrendingIdeas = async () => {
 };
 
 // fetch for comments
-export const getComments = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments`);
+export const getComments = async (token) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
   const data = await res.json();
 
   return data;

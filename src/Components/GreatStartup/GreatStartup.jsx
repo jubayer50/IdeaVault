@@ -17,7 +17,7 @@ const GreatStartup = () => {
       </p>
 
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        <div className="text-center space-y-3.5 px-6 py-8 rounded-md shadow hover:shadow-lg transition duration-300">
+        <div className="text-center space-y-3.5 px-6 py-8 rounded-md shadow hover:shadow-lg transition duration-300 border">
           <div className="flex items-center justify-center mb-5">
             <Image
               src={idea}
@@ -35,7 +35,7 @@ const GreatStartup = () => {
           </p>
         </div>
 
-        <div className="text-center space-y-3.5 px-6 py-8 rounded-md shadow hover:shadow-lg transition duration-300">
+        <div className="text-center space-y-3.5 px-6 py-8 rounded-md shadow hover:shadow-lg transition duration-300 border">
           <div className="flex items-center justify-center mb-5">
             <Image
               src={feedback}
@@ -53,7 +53,7 @@ const GreatStartup = () => {
           </p>
         </div>
 
-        <div className="text-center space-y-3.5 px-6 py-8 rounded-md shadow hover:shadow-lg transition duration-300">
+        <div className="text-center space-y-3.5 px-6 py-8 rounded-md shadow hover:shadow-lg transition duration-300 border">
           <div className="flex items-center justify-center mb-5">
             <Image
               src={collaborators}
@@ -71,7 +71,7 @@ const GreatStartup = () => {
           </p>
         </div>
 
-        <div className="text-center space-y-3.5 px-6 py-8 rounded-md shadow hover:shadow-lg transition duration-300">
+        <div className="text-center space-y-3.5 px-6 py-8 rounded-md shadow hover:shadow-lg transition duration-300 border">
           <div className="flex items-center justify-center mb-5">
             <Image
               src={innovation}

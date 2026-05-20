@@ -8,7 +8,7 @@ const IdeasPage = async () => {
   return (
     <div className="max-w-340 mx-auto px-3 my-10 md:mt-12 md:mb-20">
       <div>
-        <div className="space-y-2 text-[#001931] text-center">
+        <div className="space-y-2">
           {" "}
           <h2 className="font-bold text-3xl md:text-4xl">
             Explore Innovative Ideas
@@ -19,7 +19,7 @@ const IdeasPage = async () => {
           </p>
         </div>
 
-        <div className="mt-5 rounded-md bg-gray-200 p-2 flex flex-col md:flex-row md:items-center justify-between gap-2">
+        <div className="mt-8 rounded-md bg-gray-200 p-2 flex flex-col md:flex-row md:items-center justify-between gap-2">
           <div className="flex justify-center gap-3 rounded-md bg-gray-200 p-2">
             <SearchField name="search" className={"w-62.5"}>
               <SearchField.Group className="rounded-md border shadow-none ">
