@@ -1,4 +1,4 @@
-import CommentsCard from "@/Components/CommentsCard/CommentsCard";
+import Comments from "@/Components/Comments/Comments";
 import PostComment from "@/Components/PostComment/PostComment";
 import { getIdeaById } from "@/lib/data";
 import { Card, Chip } from "@heroui/react";
@@ -88,7 +88,9 @@ const IdeaDetailPage = async ({ params }) => {
 
       <PostComment idea={idea}></PostComment>
 
-      <CommentsCard ideaId={_id}></CommentsCard>
+      <Comments ideaId={_id}></Comments>
+
+      {/* <CommentsCard ideaId={_id}></CommentsCard> */}
     </div>
   );
 };
