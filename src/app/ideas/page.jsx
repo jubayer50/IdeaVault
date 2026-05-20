@@ -1,4 +1,5 @@
 import IdeaCard from "@/Components/IdeaCard/IdeaCard";
+import SearchBar from "@/Components/SearchBar/SearchBar";
 import { getIdeas } from "@/lib/data";
 import { Button, ListBox, SearchField, Select } from "@heroui/react";
 
@@ -8,8 +9,12 @@ export const metadata = {
     "IdeaVault is a web-based platform where users can share innovative startup ideas,explore ideas posted by others, and engage through comments, and discussions.",
 };
 
-const IdeasPage = async () => {
-  const ideas = await getIdeas();
+const IdeasPage = async ({ searchParams }) => {
+  const { search } = await searchParams;
+
+  console.log(search, "from idea fetch");
+
+  const ideas = await getIdeas(search || "");
 
   return (
     <div className="max-w-340 mx-auto px-3 my-10 md:mt-12 md:mb-20">
@@ -25,18 +30,8 @@ const IdeasPage = async () => {
           </p>
         </div>
 
-        <div className="mt-8 rounded-md bg-gray-200 p-2 flex flex-col md:flex-row md:items-center justify-between gap-2">
-          <div className="flex justify-center gap-3 rounded-md bg-gray-200 p-2">
-            <SearchField name="search" className={"w-62.5"}>
-              <SearchField.Group className="rounded-md border shadow-none ">
-                <SearchField.SearchIcon />
-                <SearchField.Input placeholder="Search..." className={""} />
-                <SearchField.ClearButton />
-              </SearchField.Group>
-            </SearchField>
-
-            <Button className={"rounded-md bg-[#469165]"}>Search</Button>
-          </div>
+        <div className="mt-8 rounded-md bg-gray-200 px-2 py-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
+          <SearchBar></SearchBar>
 
           <div>
             <Select
