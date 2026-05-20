@@ -8,6 +8,7 @@ import { CiLogout } from "react-icons/ci";
 import MyNavLink from "./MyNavLink";
 import { authClient } from "@/lib/auth-client";
 import { FaRegUser } from "react-icons/fa6";
+import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -72,59 +73,63 @@ const Navbar = () => {
           {links}
         </ul>
 
-        {user ? (
-          <div
-            onClick={() => setShowUserMenu(!showUserMenu)}
-            className="flex relative items-center gap-2 px-3 py-1.5  hover:bg-white transition duration-300 rounded-md"
-          >
-            <Avatar>
-              <Avatar.Image
-                alt={user?.name}
-                src={user?.image}
-                referrerPolicy="no"
-                className="object-cover aspect-square"
+        <div className="flex gap-2 items-center">
+          <ThemeSwitch></ThemeSwitch>
+
+          {user ? (
+            <div
+              onClick={() => setShowUserMenu(!showUserMenu)}
+              className="flex relative items-center gap-2 px-3 py-1.5  hover:bg-white transition duration-300 rounded-md"
+            >
+              <Avatar>
+                <Avatar.Image
+                  alt={user?.name}
+                  src={user?.image}
+                  referrerPolicy="no"
+                  className="object-cover aspect-square"
+                />
+                <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+              </Avatar>
+
+              <RiArrowDropDownLine
+                className={`${showUserMenu ? "rotate-180 transition duration-300" : ""} text-2xl`}
               />
-              <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
-            </Avatar>
 
-            <RiArrowDropDownLine
-              className={`${showUserMenu ? "rotate-180 transition duration-300" : ""} text-2xl`}
-            />
-
-            {showUserMenu && (
-              <div className="absolute top-14.5 right-0 space-y-1 px-3 py-2 bg-gray-100 rounded-md border shadow-sm w-40">
-                <Link href={"/profile"}>
-                  <p className="hover:bg-gray-200 px-2 py-1 rounded-md flex items-center gap-2">
-                    <FaRegUser /> Profile
+              {showUserMenu && (
+                <div className="absolute top-14.5 right-0 space-y-1 px-3 py-2 bg-gray-100 rounded-md border shadow-sm w-40">
+                  <Link href={"/profile"}>
+                    <p className="hover:bg-gray-200 px-2 py-1 rounded-md flex items-center gap-2">
+                      <FaRegUser /> Profile
+                    </p>
+                  </Link>
+                  <p
+                    onClick={async () => await authClient.signOut()}
+                    className="text-red-600 hover:bg-gray-200 px-2 py-1 rounded-md flex items-center gap-2"
+                  >
+                    <CiLogout className="font-bold text-lg" /> Log Out
                   </p>
-                </Link>
-                <p
-                  onClick={async () => await authClient.signOut()}
-                  className="text-red-600 hover:bg-gray-200 px-2 py-1 rounded-md flex items-center gap-2"
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="flex items-center gap-3">
+              <Link href={"/login"}>
+                <Button
+                  variant="outline"
+                  className={
+                    "rounded-md border border-[#469165] hidden md:block "
+                  }
                 >
-                  <CiLogout className="font-bold text-lg" /> Log Out
-                </p>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="flex items-center gap-3">
-            <Link href={"/login"}>
-              <Button
-                variant="outline"
-                className={
-                  "rounded-md border border-[#469165] hidden md:block "
-                }
-              >
-                Log In
-              </Button>
-            </Link>
+                  Log In
+                </Button>
+              </Link>
 
-            <Link href={"/registration"}>
-              <Button className={"rounded-md bg-[#469165]"}>Sign Up</Button>
-            </Link>
-          </div>
-        )}
+              <Link href={"/registration"}>
+                <Button className={"rounded-md bg-[#469165]"}>Sign Up</Button>
+              </Link>
+            </div>
+          )}
+        </div>
       </header>
       {isMenuOpen && (
         <div className="border-t border-separator md:hidden">

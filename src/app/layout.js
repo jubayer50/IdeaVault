@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/Components/Navbar/Navbar";
 import { Toast } from "@heroui/react";
 import Footer from "@/Components/Footer/Footer";
+import NextThemeProvider from "@/providers/NextThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,17 +16,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.className}`}>
-      <body>
-        <Navbar></Navbar>
+    <html lang="en" className={`${inter.className}`} suppressHydrationWarning>
+      <body className="bg-background text-foreground">
+        <NextThemeProvider>
+          <Navbar></Navbar>
 
-        <main>
-          {children}
+          <main>
+            {children}
 
-          <Toast.Provider />
-        </main>
+            <Toast.Provider />
+          </main>
 
-        <Footer></Footer>
+          <Footer></Footer>
+        </NextThemeProvider>
       </body>
     </html>
   );
