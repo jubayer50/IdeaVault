@@ -5,6 +5,7 @@ import { AlertDialog, Button, Chip, toast } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import MyIdeaEditModal from "../MyIdeaEditModal/MyIdeaEditModal";
 
 const MyIdeaCard = ({ myIdea }) => {
   const router = useRouter();
@@ -30,28 +31,8 @@ const MyIdeaCard = ({ myIdea }) => {
       toast.success("your idea deleted!");
       router.refresh();
     }
-
-    // TODO
   };
-  /**
- "_id": "6a0d72e79d57d7ecb6c82ec3",
-"name": "Smart Budget Manager",
-"short_description": "A smart app to manage personal finance and savings efficiently.",
-"detailed_description": "An AI-powered finance app that tracks income, expenses, savings goals, and provides smart budgeting advice.",
-"image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c",
-"category": "finance",
-"tags": [
-"budget",
-"savings",
-"finance",
-"expense tracking"
-],
-"problem_statement": "Most people fail to manage monthly expenses effectively.",
-"proposed_solution": "Automated expense tracking with AI-based saving recommendations.",
-"estimated_budget": "12000",
-"target_audience": "Students, professionals, and small business owners",
-"userid": "6a0c81de6eef0bf0a7be57d3"
-   */
+
   return (
     <div>
       <div className="flex flex-col md:flex-row md:items-end gap-8 border border-gray-200 rounded-md p-4 group">
@@ -86,9 +67,7 @@ const MyIdeaCard = ({ myIdea }) => {
 
         <div className=" ">
           <div className="flex gap-4">
-            <Button variant="outline" className={"border-[#469165] rounded-md"}>
-              Edit
-            </Button>
+            <MyIdeaEditModal myIdea={myIdea}></MyIdeaEditModal>
 
             <AlertDialog>
               <Button variant="danger" className={"rounded-md"}>
