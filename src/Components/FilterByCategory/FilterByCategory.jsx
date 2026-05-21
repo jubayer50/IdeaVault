@@ -43,6 +43,11 @@ const FilterByCategory = () => {
         </Select.Trigger>
         <Select.Popover className={"rounded-md shadow-md"}>
           <ListBox>
+            <ListBox.Item id="" textValue="All" className="hover:rounded-md">
+              All
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+
             <ListBox.Item
               id="technology"
               textValue="Technology"
