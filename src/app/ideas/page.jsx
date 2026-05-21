@@ -2,7 +2,6 @@ import FilterByCategory from "@/Components/FilterByCategory/FilterByCategory";
 import IdeaCard from "@/Components/IdeaCard/IdeaCard";
 import SearchBar from "@/Components/SearchBar/SearchBar";
 import { getIdeas } from "@/lib/data";
-import { Button, ListBox, SearchField, Select } from "@heroui/react";
 
 export const metadata = {
   title: "IdeaVault | ideas",

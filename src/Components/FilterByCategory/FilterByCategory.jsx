@@ -1,10 +1,40 @@
 "use client";
 import { ListBox, Select } from "@heroui/react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const FilterByCategory = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const handleCategoryChange = (value) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (value) {
+      params.set("category", value);
+    } else {
+      params.delete("category");
+    }
+
+    router.push(`/ideas?${params.toString()}`);
+  };
+
   return (
     <div>
-      <Select placeholder="Filter by Category" className={"flex-1"}>
+      <Select
+        placeholder="Filter by Category"
+        className={"flex-1"}
+        onSelectionChange={(keys) => {
+          let value;
+
+          if (typeof keys === "string") {
+            value = keys;
+          } else {
+            value = Array.from(keys)[0];
+          }
+
+          handleCategoryChange(value);
+        }}
+      >
         <Select.Trigger
           className={"border border-gray-200 rounded-md shadow-none "}
         >
