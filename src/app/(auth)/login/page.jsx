@@ -48,9 +48,9 @@ const LoginPage = () => {
     if (data) {
       toast.success("Login successful!");
 
-      const target = redirectPath || "/";
+      const target = redirectPath ? decodeURIComponent(redirectPath) : "/";
 
-      router.replace(target);
+      window.location.replace(target);
     }
 
     if (error) {
