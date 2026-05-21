@@ -1,7 +1,7 @@
 // fetch for all ideas data
-export const getIdeas = async (search = "") => {
+export const getIdeas = async (search = "", category = "") => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/ideas?search=${search}`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/ideas?search=${search}&category=${category}`,
   );
   const data = await res.json();
 

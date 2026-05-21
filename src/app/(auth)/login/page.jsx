@@ -44,17 +44,18 @@ const LoginPage = () => {
 
     if (data) {
       toast.success("Login successful!");
+      router.push(redirectPath || "/");
     }
 
     if (error) {
       toast.danger(error.message);
-      router.push(redirectPath);
     }
   };
 
   const handleGoogleLoin = async () => {
     await authClient.signIn.social({
       provider: "google",
+      callbackURL: `${window.location.origin}${redirectPath || "/"}`,
     });
   };
 

@@ -22,7 +22,7 @@ const SearchBar = () => {
   };
   return (
     <div>
-      <div className="flex justify-center gap-3 rounded-md bg-gray-200 p-2">
+      <div className="flex justify-center gap-3 rounded-md bg-gray-200">
         <SearchField name="search" className={"w-62.5 md:w-72"}>
           <SearchField.Group className="rounded-md border shadow-none ">
             <SearchField.SearchIcon />
