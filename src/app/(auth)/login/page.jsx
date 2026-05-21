@@ -45,6 +45,7 @@ const LoginPage = () => {
     if (data) {
       toast.success("Login successful!");
       router.push(redirectPath || "/");
+      router.refresh();
     }
 
     if (error) {
