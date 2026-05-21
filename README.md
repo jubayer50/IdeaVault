@@ -35,8 +35,8 @@ The project focuses on creativity and idea sharing. It also provides secure auth
 
 ---
 
-### Frontend Repository:
+### Frontend Repository: https://github.com/jubayer50/IdeaVault
 
-### Backend Repository:
+### Backend Repository: https://github.com/jubayer50/idea-vault-server
 
-### Live Link:
+### Project Live Link: https://idea-vault-six-jade.vercel.app/
