@@ -40,12 +40,17 @@ const LoginPage = () => {
       password: loginData.password,
     });
 
-    console.log(data, "from login page");
-
+    // if (data) {
+    //   toast.success("Login successful!");
+    //   router.push(redirectPath || "/");
+    //   router.refresh();
+    // }
     if (data) {
       toast.success("Login successful!");
-      router.push(redirectPath || "/");
-      router.refresh();
+
+      const target = redirectPath || "/";
+
+      router.replace(target);
     }
 
     if (error) {
