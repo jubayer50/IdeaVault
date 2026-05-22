@@ -16,7 +16,7 @@ const Footer = () => {
               </p>
             </Link>
 
-            <div className="mt-5 max-w-55 text-white">
+            <div className="mt-5 max-w-55 text-[#ffffff80]">
               <h3 className="font-semibold text-xl">Address:</h3>
               <p className="mt-2">
                 <strong>IdeaVault HQ </strong> 128 Innovation Avenue Suite 405
