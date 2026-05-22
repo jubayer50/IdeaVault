@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import MyIdeaEditModal from "../MyIdeaEditModal/MyIdeaEditModal";
+import { authClient } from "@/lib/auth-client";
 
 const MyIdeaCard = ({ myIdea }) => {
   const router = useRouter();
@@ -20,9 +21,17 @@ const MyIdeaCard = ({ myIdea }) => {
   } = myIdea;
 
   const handleDelete = async () => {
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${_id}`,
-      { method: "DELETE", headers: { "content-type": "application/json" } },
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData.token}`,
+        },
+      },
     );
     const data = await res.json();
     console.log(data, "from detete ida");

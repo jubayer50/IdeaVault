@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button, toast } from "@heroui/react";
 import { useRouter } from "next/navigation";
 
@@ -7,13 +8,20 @@ const DeleteModal = ({ commentId, commentMessage }) => {
   const router = useRouter();
 
   const deleteHandler = async () => {
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${commentId}`,
-      { method: "DELETE", headers: { "content-type": "application/json" } },
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData.token}`,
+        },
+      },
     );
     const data = await res.json();
 
-    console.log(data, "from delete page comment");
     if (data) {
       toast.success("Comment deleted successfully!");
       router.refresh();

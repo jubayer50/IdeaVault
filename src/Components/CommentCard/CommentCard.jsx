@@ -4,23 +4,6 @@ import EditModal from "../EditModal/EditModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 
 const CommentCard = ({ comment }) => {
-  /*
- 
-   {
-      "_id": "6a0cb178eb55769d0d2104b6",
-      "comment": "wow",
-      "userid": "6a0c81de6eef0bf0a7be57d3",
-      "userName": "Jubayer",
-      "userImage": "https://images.unsplash.com/photo-1537511446984-935f663eb1f4",
-      "idea_id": "6a0bf372df879ebdb22be335",
-      "idea_name": "Smart Expense Tracker",
-      "idea_image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
-      "idea_category": "finance",
-      "comment_data": "2026-05-19T18:52:40.346Z"
-  }
-      
- */
-
   return (
     <div className="rounded-md p-3 border flex items-end justify-between">
       <div className="flex items-center gap-3">

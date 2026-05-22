@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -43,11 +44,16 @@ const MyIdeaEditModal = ({ myIdea }) => {
         .filter(Boolean);
     }
 
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${_id}`,
       {
         method: "PATCH",
-        headers: { "content-type": "application/json" },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData.token}`,
+        },
         body: JSON.stringify(updataData),
       },
     );
@@ -299,7 +305,11 @@ const MyIdeaEditModal = ({ myIdea }) => {
                     </div>
 
                     <div className="mt-5">
-                      <Button type="submit" className={"w-full rounded-md"}>
+                      <Button
+                        type="submit"
+                        slot={"close"}
+                        className={"w-full rounded-md"}
+                      >
                         <Check />
                         Update
                       </Button>

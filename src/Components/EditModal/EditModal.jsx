@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Button, Form, Input, Modal, TextField, toast } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -13,11 +14,16 @@ const EditModal = ({ commentId, commentMessage }) => {
     const formData = new FormData(e.currentTarget);
     const updataFormData = Object.fromEntries(formData.entries());
 
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${commentId}`,
       {
         method: "PATCH",
-        headers: { "content-type": "application/json" },
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData.token}`,
+        },
         body: JSON.stringify(updataFormData),
       },
     );

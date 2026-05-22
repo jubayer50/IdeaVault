@@ -28,11 +28,14 @@ const PostComment = ({ idea }) => {
     commentData.idea_category = category;
     commentData.comment_data = new Date();
 
-    console.log(commentData, "from comment page");
+    const { data: tokenData } = await authClient.token();
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments`, {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${tokenData.token}`,
+      },
       body: JSON.stringify(commentData),
     });
     const data = await res.json();

@@ -37,9 +37,14 @@ const AddIdeaPage = () => {
         .filter(Boolean);
     }
 
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas`, {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${tokenData.token}`,
+      },
       body: JSON.stringify(ideaData),
     });
     const data = await res.json();
