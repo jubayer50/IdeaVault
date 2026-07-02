@@ -29,7 +29,10 @@ const ProfileUpdate = () => {
   return (
     <div>
       <Modal>
-        <Button variant="secondary" className={"rounded-md"}>
+        <Button
+          variant="secondary"
+          className={"rounded-md text-[#469165] font-medium"}
+        >
           {" "}
           <PencilToSquare></PencilToSquare>
           Update your Profile

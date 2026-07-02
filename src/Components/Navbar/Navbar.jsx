@@ -30,10 +30,10 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
-      <header className="flex h-16 items-center justify-between px-6 max-w-340 mx-auto">
+      <header className="flex py-3.5 items-center justify-between px-3 max-w-340 mx-auto">
         <div className="flex items-center gap-4">
           <button
-            className="md:hidden"
+            className="lg:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -69,7 +69,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <ul className="hidden items-center gap-3.5 lg:gap-5 md:flex">
+        <ul className="hidden items-center gap-3.5 lg:gap-5 lg:flex">
           {links}
         </ul>
 
@@ -79,7 +79,7 @@ const Navbar = () => {
           {user ? (
             <div
               onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex relative items-center gap-2 px-3 py-1.5  hover:bg-white transition duration-300 rounded-md"
+              className="flex relative items-center gap-2 px-3 py-1.5 hover:bg-white transition duration-300 rounded-md"
             >
               <Avatar>
                 <Avatar.Image
@@ -132,7 +132,7 @@ const Navbar = () => {
         </div>
       </header>
       {isMenuOpen && (
-        <div className="border-t border-separator md:hidden">
+        <div className="border-t border-separator lg:hidden">
           <ul className="flex flex-col gap-2 p-4">
             {links}{" "}
             <li>

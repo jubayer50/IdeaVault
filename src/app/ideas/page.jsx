@@ -12,8 +12,6 @@ export const metadata = {
 const IdeasPage = async ({ searchParams }) => {
   const { search, category } = await searchParams;
 
-  console.log(search, "from idea fetch");
-
   const ideas = await getIdeas(search || "", category || "");
 
   return (
@@ -30,7 +28,7 @@ const IdeasPage = async ({ searchParams }) => {
           </p>
         </div>
 
-        <div className="mt-8 rounded-md bg-gray-200 p-3 flex flex-col md:flex-row md:items-center justify-between gap-2">
+        <div className="mt-8 rounded-md bg-[#46916525] dark:bg-[#469165] p-3 flex flex-col md:flex-row md:items-center justify-between gap-2">
           <SearchBar></SearchBar>
 
           <FilterByCategory></FilterByCategory>

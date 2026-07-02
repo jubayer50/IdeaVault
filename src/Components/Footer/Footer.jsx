@@ -6,7 +6,7 @@ import { MdOutlineEmail } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <div className="pt-26 pb-10 bg-[#001931]">
+    <div className="pt-26 pb-10 bg-[#001931] dark:bg-black">
       <div className="max-w-340 mx-auto px-3">
         <div className="flex flex-col md:flex-row justify-between gap-12">
           <div>
@@ -97,13 +97,13 @@ const Footer = () => {
 
             <div className="flex items-center gap-3 mt-2">
               <div className="w-9 h-9 rounded-full p-1 bg-white flex items-center justify-center">
-                <FaXTwitter className="" />
+                <FaXTwitter className="text-[#469165]" />
               </div>
               <div className="w-9 h-9 rounded-full p-1 bg-white flex items-center justify-center">
-                <FaLinkedinIn className="" />
+                <FaLinkedinIn className="text-[#469165]" />
               </div>
               <div className="w-9 h-9 rounded-full p-1 bg-white flex items-center justify-center">
-                <FaFacebookF className="" />
+                <FaFacebookF className="text-[#469165]" />
               </div>
             </div>
           </div>

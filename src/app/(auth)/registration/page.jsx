@@ -58,7 +58,7 @@ const RegistrationPage = () => {
     <div className="max-w-360 mx-auto px-3 flex items-center justify-center my-12 md:my-26">
       <div>
         <div className="text-center space-y-2">
-          <h2 className="text-[#001931] font-bold text-[22px] md:text-3xl">
+          <h2 className="text-[#001931] dark:text-white font-bold text-[22px] md:text-3xl">
             Join the Future of Innovation
           </h2>
           <p className="max-w-120 mx-auto">
@@ -160,7 +160,7 @@ const RegistrationPage = () => {
           <div className="mt-4 text-center">
             <p>
               If you have account |{" "}
-              <Link href={"/login"} className="text-blue-600 font-semibold">
+              <Link href={"/login"} className="text-[#469165] font-semibold">
                 Log In
               </Link>
             </p>

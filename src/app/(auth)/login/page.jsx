@@ -40,11 +40,6 @@ const LoginPage = () => {
       password: loginData.password,
     });
 
-    // if (data) {
-    //   toast.success("Login successful!");
-    //   router.push(redirectPath || "/");
-    //   router.refresh();
-    // }
     if (data) {
       toast.success("Login successful!");
 
@@ -70,7 +65,7 @@ const LoginPage = () => {
       <div className="rounded-md border border-gray-200 flex gap-4 overflow-hidden">
         <div className="flex-1 p-4 md:p-8">
           <div className="space-y-1">
-            <h2 className="text-[#001931] font-bold text-[22px] md:text-3xl">
+            <h2 className="text-[#001931] dark:text-white font-bold text-[22px] md:text-3xl">
               Welcome Back to Idea<span className="text-[#469165]">Vault</span>
             </h2>
             <p className="text-[16px] text-[#469165]">
@@ -126,7 +121,7 @@ const LoginPage = () => {
                   </div>
                 </TextField>
 
-                <Link href={"/forget-password"} className="text-blue-600">
+                <Link href={"/forget-password"} className="text-[#469165]">
                   Forget Password
                 </Link>
               </div>
@@ -161,7 +156,7 @@ const LoginPage = () => {
                 If you don't have account |{" "}
                 <Link
                   href={"/registration"}
-                  className="text-blue-600 font-semibold"
+                  className="text-[#469165] font-semibold"
                 >
                   Registration
                 </Link>

@@ -22,7 +22,7 @@ const SearchBar = () => {
   };
   return (
     <div>
-      <div className="flex justify-center gap-3 rounded-md bg-gray-200">
+      <div className="flex justify-center gap-3 rounded-md">
         <SearchField name="search" className={"w-62.5 md:w-72"}>
           <SearchField.Group className="rounded-md border shadow-none ">
             <SearchField.SearchIcon />
@@ -36,7 +36,12 @@ const SearchBar = () => {
           </SearchField.Group>
         </SearchField>
 
-        <Button onClick={handleSearch} className={"rounded-md bg-[#469165]"}>
+        <Button
+          onClick={handleSearch}
+          className={
+            "rounded-md bg-[#469165] dark:bg-white dark:text-[#469165]"
+          }
+        >
           Search
         </Button>
       </div>
